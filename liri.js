@@ -12,7 +12,19 @@ var nodeArgs = process.argv;
 var movieName = "";
 var songName = "";
 
+//Do what it says
 
+if (arg === "do-what-it-says"){
+    fs.readFile('random.txt', 'utf8', function(err, data){
+        arg = data.split(" ")[0]
+        nodeArgs = (data.split(" "))
+        liri()
+    })
+    
+
+}
+
+function liri(){
 //Twitter
 if (arg === 'my-tweets'){
 console.log(client)
@@ -104,12 +116,9 @@ var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey
 
 };
 
-if (arg === "do-what-it-says"){
-    fs.readFile('random.txt', 'utf8', function(err, data){
-        console.log(data)
-    })
-
 }
+
+liri()
 
 
 
