@@ -11,8 +11,16 @@ var arg = process.argv[2];
 var nodeArgs = process.argv;
 var movieName = "";
 var songName = "";
+var statusLog = process.argv[2];
+var dataLog;
 
-//Do what it says
+//Status for StatusLog variable
+for (var i = 3; i < nodeArgs.length; i++){
+  statusLog = statusLog + " " + nodeArgs[i];
+}
+
+
+//Do what it says command
 
 if (arg === "do-what-it-says"){
     fs.readFile('random.txt', 'utf8', function(err, data){
@@ -23,16 +31,26 @@ if (arg === "do-what-it-says"){
     
 
 }
-
 function liri(){
+
+
 //Twitter
 if (arg === 'my-tweets'){
-console.log(client)
 var params = {screen_name: 'drewBot123'};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
     for (i = 0; i < 19; i++){
     console.log(JSON.stringify(tweets[i].text, null, 2));
+    dataLog = JSON.stringify(tweets[i].text, null, 2) 
+    //dataLog for log.txt file
+    fs.appendFile("log.txt","\n" + dataLog, function(err) {
+
+      // If an error was experienced we say it.
+      if (err) {
+        console.log(err);
+      }
+    
+    });
     }
   }
 });
@@ -67,6 +85,24 @@ if (arg === 'spotify-this-song'){
     console.log("Artists: " + JSON.stringify(data.tracks.items[0].artists[0].name, null, 2)); 
     console.log("Album Title: " + JSON.stringify(data.tracks.items[0].album.name, null, 2));
     console.log("Preview: " + JSON.stringify(data.tracks.items[0].external_urls.spotify, null, 2)); 
+    dataLog = "Title: " + JSON.stringify(data.tracks.items[0].name, null, 2) + "\n" + "Artists: " + JSON.stringify(data.tracks.items[0].artists[0].name, null, 2)
+    + "\n" + "Album Title: " + JSON.stringify(data.tracks.items[0].album.name, null, 2) + "\n" + "Preview: " + JSON.stringify(data.tracks.items[0].external_urls.spotify, null, 2);
+
+    //dataLog for log.txt file
+    fs.appendFile("log.txt","\n" + dataLog, function(err) {
+
+    // If an error was experienced we say it.
+        if (err) {
+          console.log(err);
+        }
+        
+    // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+        else {
+          console.log("Content Added!");
+        }
+        
+        });
+
     });
 }
 
@@ -111,12 +147,45 @@ var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey
           console.log("Language: " + JSON.parse(body).Language);
           console.log("Plot: " + JSON.parse(body).Plot);
           console.log("Actors: " + JSON.parse(body).Actors);
+          dataLog = "Title: " + JSON.parse(body).Title + "\n" + "Release Year: " + JSON.parse(body).Year + "\n" 
+          + "IMDB Rating: " + JSON.parse(body).Ratings[0].Value + "\n" + "Plot: " + JSON.parse(body).Plot  + "\n" 
+          + "Actors: " + JSON.parse(body).Actors
+
+            //dataLog for log.txt file
+          fs.appendFile("log.txt","\n" + dataLog, function(err) {
+
+            // If an error was experienced we say it.
+                if (err) {
+                  console.log(err);
+                }
+          
+            // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+                else {
+                  console.log("Content Added!");
+                }
+          
+          });
         }
   });
 
 };
 
 }
+
+//log command
+fs.appendFile("log.txt","\n" + statusLog, function(err) {
+
+  // If an error was experienced we say it.
+  if (err) {
+    console.log(err);
+  }
+
+  // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+  else {
+    console.log("Content Added!");
+  }
+
+});
 
 liri()
 

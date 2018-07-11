@@ -1,0 +1,32 @@
+
+movie-this The last samurai
+Title: The Last Samurai
+Release Year: 2003
+IMDB Rating: 7.7/10
+Plot: An American military advisor embraces the Samurai culture he was hired to destroy after he is captured in battle.
+Actors: Ken Watanabe, Tom Cruise, William Atherton, Chad Lindberg
+my-tweets
+"About to hit the hay!"
+"Almost there!"
+"This is taking forever!"
+"Twitter API is bomb!"
+"What's trending right now?"
+"Work tomorrow morning!"
+"Drake's new album is fire!"
+"#KOD"
+"Man I'm tired!"
+"RT @blummer27: Gerrit Cole!! \n\n💯🔥🔥🔥🔥\n169 K's thru 19 starts in '18!!!!!\n#NeverSettle"
+"New Twitter Who this!"
+"20 tweets are a lot!"
+"I love food!!!"
+"Liri Rocks!"
+"Clutch City Baby!"
+"James Harden is the MVP!"
+"Hello World!"
+"Testing Twitter Out!"
+"Hello Twitter! #myfirstTweet"
+do-what-it-says
+Title: "I Want It That Way"
+Artists: "Backstreet Boys"
+Album Title: "The Hits--Chapter One"
+Preview: "https://open.spotify.com/track/6e40mgJiCid5HRAGrbpGA6"
